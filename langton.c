@@ -51,10 +51,10 @@ void move_forward(struct ant *ant) {
 		ant->x += 1;
 		break;
 	case UP:
-		ant->y -= 1;
+		ant->y += 1;
 		break;
 	case DOWN:
-		ant->y += 1;
+		ant->y -= 1;
 		break;
 	}
 }

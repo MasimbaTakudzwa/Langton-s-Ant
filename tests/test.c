@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#include "langton.h"
-#include "visualiser.h"
+#include "../langton.h"
+#include "../visualiser.h"
 
 // Test turn left by performing a full rotation of the ant
 void test_turn_left() {
