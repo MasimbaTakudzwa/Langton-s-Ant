@@ -14,6 +14,7 @@ void start_visualisation(struct ant* ant) {
    curs_set(FALSE);
    max_x = getmaxx(stdscr);
    max_y = getmaxy(stdscr);
+   
    cells = calloc(max_y*max_x, sizeof(cell));
    ant->x = max_x/2;
    ant->y = max_y/2;
@@ -39,6 +40,28 @@ void visualise_and_advance(struct ant* ant) {
       
       /* Advance to next step */
       apply_rule(&cell_under_ant, ant);
+      switch(ant->direction){
+         case LEFT:
+            if (ant->x <= 0){
+               ant->x = max_x;
+            } 
+            break;
+         case RIGHT:
+            if (ant->x >= max_x){
+               ant->x = 0;
+            }
+            break;
+         case DOWN:
+            if (ant->y <=0){
+               ant->y = max_y;
+            };
+            break;
+         case UP:
+            if(ant->y >= max_y){
+               ant->y = 0;
+            };
+            break;
+      }
       move_forward(ant);
 }
 

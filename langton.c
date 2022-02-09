@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "langton.h"
+#include <locale.h>
 
 // Set the ants direction so that it turns left
 void turn_left(struct ant *ant) {
@@ -22,6 +23,7 @@ void turn_left(struct ant *ant) {
 
 // Set the ants direction so that it turns right
 void turn_right(struct ant *ant) {
+	
 	switch (ant->direction)
 	{
 	case LEFT:
@@ -42,6 +44,7 @@ void turn_right(struct ant *ant) {
 // Actually move the ant forward based on it's current direction
 // Should only be called after turn_left or turn_right
 void move_forward(struct ant *ant) {
+
 	switch (ant->direction)
 	{
 	case LEFT:
