@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
-
+//Just changed the directory for visualiser.h and langton.h as they are in the parent files working directory 
 #include "../langton.h"
 #include "../visualiser.h"
 

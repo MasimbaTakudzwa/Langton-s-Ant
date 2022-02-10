@@ -2,7 +2,8 @@
 #include "langton.h"
 #include <locale.h>
 
-// Set the ants direction so that it turns left
+// Using switch statements:
+//90 degree turns left turns the ant from Up -> Left -> Down -> Right -> Up
 void turn_left(struct ant *ant) {
 	switch (ant->direction)
 	{
@@ -21,7 +22,8 @@ void turn_left(struct ant *ant) {
 	}
 }
 
-// Set the ants direction so that it turns right
+//Using switch statements:
+//90 degree turns right turns the ant from Up -> Right -> Down -> Left -> Up
 void turn_right(struct ant *ant) {
 	
 	switch (ant->direction)
@@ -45,6 +47,9 @@ void turn_right(struct ant *ant) {
 // Should only be called after turn_left or turn_right
 void move_forward(struct ant *ant) {
 
+	//Using switch statements:
+	//If the ant is facing Left we need to decrement by 1 and if it is facing right we need to increment by 1
+	//If the ant is facing Down we need to decrement by 1 and if it is facing Up we need to increment by 1
 	switch (ant->direction)
 	{
 	case LEFT:
@@ -75,11 +80,13 @@ const char* direction_to_s(enum direction d) {
 // * When at a white square, turn 90° clockwise, flip the color of the square to black and then move forward one unit.
 // * When at a black square, turn 90° counter-clockwise, flip the color of the square to white and then move forward one unit.
 void apply_rule(enum colour *colour, struct ant *ant) {
+	
+	// If the square is white turn right and change the square color to black
 	if (*colour == 0) {
 		turn_right(ant);
 		*colour = 1;
 		
-	}
+	}// If the square is black turn left and change the square to white and turn left
 	else if (*colour == 1) {
 		turn_left(ant);
 		*colour = 0;

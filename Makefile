@@ -1,16 +1,16 @@
-CC == gcc
+CC = gcc
 
 library:
-	$(CC) -c visualiser.c langton.c -fpic
-	$(CC) *.o -shared -o libant.so -lncursesw
-	$(CC) -c main.c main.o
-	$(CC) -o main.c main.o
-	$(CC) -c main.c -o main.o
-	$(CC) -o main main.o -L. -lant
+	$(CC) -fpic -c langton.c
+	$(CC) -fpic -c visualiser.c
+	$(CC) -shared -o libant.so visualiser.o langton.o -lncursesw
+	$(CC) -c main.c
+	$(CC) -c main.c
+	$(CC) -o ant main.c libant.so
 
 clean:
-	$(CC) rm *.o
-	$(CC) rm *.so
+	rm *.o
+	rm *.so
 
 test:
 	$(CC) gcc -o test visualiser.c langton.c ./tests/test.c -lncursesw

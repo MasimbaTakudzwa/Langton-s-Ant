@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "visualiser.h"
 
-#define cell_at(y,x) cells[(y)*max_x + (x)] // Modify for correct boundary behaviour
+#define cell_at(y,x) cells[(y)*max_x + (x)] 
 #define cell_under_ant cell_at(ant->y, ant->x)
 cell *cells;
 
@@ -40,6 +40,9 @@ void visualise_and_advance(struct ant* ant) {
       
       /* Advance to next step */
       apply_rule(&cell_under_ant, ant);
+
+      // Since I could not get the cell_at() boundary behaviour working I tried to implement it another way using a greedy algorithm
+      //Assuming the boundary values are 0 and max values of x and y respectively. If the ant moves past those values it should appear on the other side
       switch(ant->direction){
          case LEFT:
             if (ant->x <= 0){
