@@ -13,5 +13,5 @@ clean:
 	rm *.so
 
 test:
-	$(CC) gcc -o test visualiser.c langton.c ./tests/test.c -lncursesw
+	$(CC) -o test visualiser.c langton.c ./tests/test.c -lncursesw
 	./test
